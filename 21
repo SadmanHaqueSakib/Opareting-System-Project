@@ -1,0 +1,23 @@
+#include<stdio.h>
+#include<conio.h>
+int main()
+{
+    float NotModified;
+    float AccessTimeMemory;
+    float EffectiveAccessTime;
+    float Repacement;
+    float FaultMaximumAcceptable;
+    float Modified;
+    printf("Page Value For Fault Service time Not modified: ");
+    scanf("%f",&NotModified);
+    printf("Page value For Fault Service Time Modified: ");
+    scanf("%f",&Modified);
+    printf("Enter Access Time Of Memory :  ");
+    scanf("%f",&AccessTimeMemory);
+    printf("Enter Effective Access time  : ");
+    scanf("%f",&EffectiveAccessTime);
+    printf("Enter The Replacement Page Modification (Percentage) : ");
+    scanf("%f",&Repacement);
+    FaultMaximumAcceptable=(EffectiveAccessTime-AccessTimeMemory)/(((Repacement*Modified)+(1-Repacement)*NotModified)+AccessTimeMemory);
+    printf(" Page Fault Maximum Acceptable Is  %f",FaultMaximumAcceptable);
+}
