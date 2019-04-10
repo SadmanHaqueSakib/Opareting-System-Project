@@ -1,0 +1,50 @@
+#include<stdio.h>
+#include<conio.h>
+int main()
+{
+	int BurstTime[10],p[10],n,temp,i,j,WaitingTime[10],sum=0;
+	float avg;
+	printf("Enter total no of Process:");
+	scanf("%d",&n);
+	printf("\n Enter Burst Time for each Process:-");
+	for(i=0;i<n;i++)
+	{
+		printf("\nBurst Time of Process P%d:",i);
+		scanf("%d",&BurstTime[i]);
+		p[i]=i;
+	}
+	for(i=0;i<n-1;i++)
+	{
+		for(j=i+1;j<n;j++)
+		{
+			if(BurstTime[i]>BurstTime[j])
+			{
+				temp=BurstTime[i];
+				BurstTime[i]=BurstTime[j];
+				BurstTime[j]=temp;
+				temp=p[i];
+				p[i]=p[j];
+				p[j]=temp;
+			}
+		}
+	}
+	WaitingTime[0]=0;
+	for(i=1;i<n;i++)
+	{
+		WaitingTime[i]=WaitingTime[i-1]+BurstTime[i-1];
+	}
+	for(i=0;i<n;i++)
+	{
+		sum+=WaitingTime[i];
+	}
+	avg=(float)sum/n;
+	printf("\n Waiting Time for each process:-");
+	for(i=0;i<n;i++)
+	{
+		printf("\n Waiting time for process P%d is %d sec.",p[i],WaitingTime[i]);
+
+	}
+	printf("\n Average waiting time is %f sec.",avg);
+	getch();
+	return 0;
+}
